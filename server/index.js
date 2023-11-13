@@ -3,33 +3,20 @@ import logger from 'morgan'
 import { createServer } from 'node:http'
 import { Server } from 'socket.io'
 
-const port = process.env.PORT ?? 3000
-
 const app = express()
 
 const server = createServer(app)
 const io = new Server(server, {
-    connectionStateRecovery: {},
+    cors: {
+        origin: 'http://localhost:5173/',
+    },
 })
-
-io.on('connection', socket => {
-    console.log('a user has connected')
-
-    socket.on('disconnect', () => {
-        console.log('a use has disconnected')
-    })
-
-    socket.on('chat message', msg => {
-        io.emit('chat message', msg)
-    })
-})
-
 app.use(logger('dev'))
 
-app.get('/', (req, res) => {
-    res.sendFile(process.cwd() + '/client/index.html')
+io.on('connection', socket => {
+    console.log('Front Connected')
 })
 
-server.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+server.listen(3000, () => {
+    console.log('Server running on port', 3000)
 })
