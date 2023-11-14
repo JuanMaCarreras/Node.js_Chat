@@ -30,11 +30,13 @@ function App () {
   }
 
   return (
-    <div>
+    <div className='h-screen bg-slate-800 text-white flex items-end justify-center p-24'>
+      <h1>My Super Chat Bitches !!!!!</h1>
+
       <ul className=''>
         {
           messages.map((message, index) => (
-            <li className='text-3xl' key={index}>{message.from}:{message.body}</li>
+            <li key={index}>{message.from}:{message.body}</li>
           ))
         }
       </ul>
