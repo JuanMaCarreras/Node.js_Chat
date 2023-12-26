@@ -7,6 +7,7 @@ const app = express()
 
 const server = createServer(app)
 const io = new Server(server)
+
 app.use(logger('dev'))
 
 io.on('connection', socket => {
