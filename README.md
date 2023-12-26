@@ -1,6 +1,6 @@
 ## Chat de Práctica con WebSocket (Socket.io), React y Tailwind CSS
 
-!Proyecto de chat en tiempo real desarrollado con WebSocket (Socket.io), React y Tailwind CSS!
+!Proyecto de chat en tiempo real desarrollado con Node.js, WebSocket (Socket.io), React y Tailwind CSS!
 
 
 Tecnologías Utilizadas 
