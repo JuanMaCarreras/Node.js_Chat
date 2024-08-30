@@ -1,5 +1,6 @@
 import io from 'socket.io-client'
 import { useState, useEffect } from 'react'
+import { IoSend } from 'react-icons/io5'
 
 const socket = io('/')
 
@@ -30,31 +31,33 @@ function App () {
   }
 
   return (
-    <div className='h-screen bg-slate-800 text-white flex items-end justify-center p-24'>
-      <h1>My Super Chat Bitches !!!!!</h1>
+    <main className='h-screen bg-slate-800 flex justify-center items-end'>
+      <div className='flex items-center text-white flex-col mb-11'>
+        <ul className=''>
+          {
+            messages.map((message, index) => (
+              <li key={index}>{message.body}:{message.from}</li>
+            ))
+          }
+        </ul>
 
-      <ul className=''>
-        {
-          messages.map((message, index) => (
-            <li key={index}>{message.from}:{message.body}</li>
-          ))
-        }
-      </ul>
+        <form
+          onSubmit={handleSubmit}
+          className=''
+        >
+          <input
+            type='text' placeholder='Write message....'
+            onChange={(e) => setMessage(e.target.value)}
+            className='text-black font-medium rounded-lg w-[23rem] h-[1.6rem] mx-2 px-3 '
+          />
 
-      <form onSubmit={handleSubmit}>
+          <button>
+            <IoSend />
+          </button>
+        </form>
 
-        <input
-          type='text' placeholder='Write message....'
-          onChange={(e) => setMessage(e.target.value)}
-        />
-
-        <button>
-          Send
-        </button>
-
-      </form>
-
-    </div>
+      </div>
+    </main>
   )
 }
 
